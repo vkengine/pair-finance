@@ -27,7 +27,6 @@ while True:
 
 async def store_data_point(device_id):
 
-    print("I am here !")
     ins = devices.insert()
     with psql_engine.connect() as conn:
         while True:

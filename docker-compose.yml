@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mysql_db:
-    platform: linux/x86_64
+    platform: linux/x86_64 # my development platform is based on this architecture so modified a bit 
     image: "mysql:8.0.27"  # we have the same version of mysql in the prod
     container_name: mysql56-container
     environment:
