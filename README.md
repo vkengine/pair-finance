@@ -166,7 +166,7 @@ These insights can be further analyzed, visualized, and interpreted to uncover t
    ![*Final Table](assets/final_table.png)
 
 
-## Bonus :
+## Bonus 
 
 1. **Added a monitoring basic**:
    - All datehour job start and end status for failure tracking
