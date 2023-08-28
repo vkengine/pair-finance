@@ -184,4 +184,11 @@ These insights can be further analyzed, visualized, and interpreted to uncover t
    `create_engine(environ["POSTGRESQL_CS"], pool_pre_ping=True, pool_size=10, isolation_level="AUTOCOMMIT")`
    [View Code](main/main.py)
 
+4. **Added a small test case for distance calculation formula**:
+   - Run result
+   ![*test](assets/test.png)
+   - Change:
+   `` python test_unit.py ``
+   [View Code](test_unit.py)
+
    
