@@ -165,7 +165,7 @@ These insights can be further analyzed, visualized, and interpreted to uncover t
    
    ![*Final Table](assets/final_table.png)
 5. **Running containers and Images**:
-   - Example on locak:
+   - Example on local:
    
    ![*Run logs](assets/logs1.png)
    ![*Run logs](assets/logs2.png)
