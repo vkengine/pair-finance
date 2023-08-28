@@ -186,7 +186,9 @@ These insights can be further analyzed, visualized, and interpreted to uncover t
 
 4. **Added a small test case for distance calculation formula**:
    - Run result
+   
    ![*test](assets/test.png)
+   
    - Change:
    `` python test_unit.py ``
    [View Code](test_unit.py)
