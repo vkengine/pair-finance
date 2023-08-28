@@ -78,7 +78,7 @@ def calculate_total_distance(group):
 def store_results_to_mysql(result_df, source_db_engine):
     with source_db_engine.connect() as connection:
         result_df.to_sql(
-            "results", connection, if_exists="replace", index=False, method="multi"
+            "results", connection, if_exists="append", index=False, method="multi"
         )
 
 

@@ -46,6 +46,6 @@ services:
       - mysql_db
       - psql_db
       - main
-    command: ["python", "./analytics.py" ]
+    command: ["/bin/bash", "-c", "while true; do python ./analytics.py; sleep 3600; done"]
 
 

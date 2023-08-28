@@ -65,34 +65,48 @@ start_time, end_time, start_time_readable, end_time_readable = get_start_time_en
 
 metadata_obj_mysql.create_all(mysql_engine)
 
+print('Created result tables in mysql..')
+
 store_script_run_history_to_mysql(mysql_engine, runs_table, start_time_readable, end_time_readable, 'started')
+
+print('Started..')
 
 df = fetch_data_within_last_hour(psql_engine, devices, start_time, end_time)
 
-df['temperature'] = pd.to_numeric(df['temperature'])
+if not df.empty:
+    print('Pulled data from psql..')
 
-# Group by 'device_id' and apply the custom function to get max temperature and timestamps
-result = df.groupby('device_id').apply(get_max_temperature_with_timestamps)
+    df['temperature'] = pd.to_numeric(df['temperature'])
 
-num_data_points = df.groupby('device_id').apply(calculate_num_data_points)
+    # Group by 'device_id' and apply the custom function to get max temperature and timestamps
+    result = df.groupby('device_id').apply(get_max_temperature_with_timestamps)
 
-# Add the 'num_data_points' to the result DataFrame
-result['num_data_points'] = num_data_points
+    num_data_points = df.groupby('device_id').apply(calculate_num_data_points)
 
-total_distances = df.groupby('device_id').apply(calculate_total_distance)
+    # Add the 'num_data_points' to the result DataFrame
+    result['num_data_points'] = num_data_points
 
-# Add the 'total_distance' to the result DataFrame
-result['total_distance'] = total_distances
+    total_distances = df.groupby('device_id').apply(calculate_total_distance)
 
-result['agg_start_time'] = start_time_readable.strftime('%Y-%m-%d %H:%M:%S %Z')
+    # Add the 'total_distance' to the result DataFrame
+    result['total_distance'] = total_distances
 
-result['agg_end_time'] = end_time_readable.strftime('%Y-%m-%d %H:%M:%S %Z')
+    result['agg_start_time'] = start_time_readable.strftime('%Y-%m-%d %H:%M:%S %Z')
 
-result = result.reset_index()
+    result['agg_end_time'] = end_time_readable.strftime('%Y-%m-%d %H:%M:%S %Z')
 
-store_results_to_mysql(result, mysql_engine)
+    result = result.reset_index()
 
-store_script_run_history_to_mysql(mysql_engine, runs_table, start_time_readable, end_time_readable, 'completed')
+    store_results_to_mysql(result, mysql_engine)
+
+    store_script_run_history_to_mysql(mysql_engine, runs_table, start_time_readable, end_time_readable, 'completed')
+
+    print('Stored results in my sql..')
+
+    del df
+    del result
 
 mysql_engine.dispose()
 psql_engine.dispose()
+
+print('terminated all connections..')
