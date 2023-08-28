@@ -164,6 +164,14 @@ These insights can be further analyzed, visualized, and interpreted to uncover t
    - Example visualization:
    
    ![*Final Table](assets/final_table.png)
+5. **Running containers and Images**:
+   - Example on locak:
+   
+   ![*Run logs](assets/logs1.png)
+   ![*Run logs](assets/logs2.png)
+   ![*Running containers](assets/running_containers.png)
+   ![*container Images](assets/docker_images.png)
+   ![*Attached volumes](assets/volumes.png)
 
 
 ## Bonus 
