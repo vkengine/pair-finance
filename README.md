@@ -4,12 +4,13 @@ Data ETL.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
+- [Introduction](#Introduction)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Data Processing](#data-processing)
 - [Results](#results)
+- [Bonus](#bonus)
 
 ## Introduction
 
@@ -160,6 +161,27 @@ These insights can be further analyzed, visualized, and interpreted to uncover t
 
 4. **Final Table on Mysql**:
    - All combined data and datehour of their aggregations
-   - - Example visualization:
+   - Example visualization:
    
    ![*Final Table](assets/final_table.png)
+
+
+## Bonus :
+
+1. **Added a monitoring basic**:
+   - All datehour job start and end status for failure tracking
+   - Example visualization:
+   
+   ![*Run table](assets/monitoring.png)
+2. **Adjusted docker image to support local development**:
+   - Local system is based on m2 chip
+   - Change:
+   `platform: linux/x86_64`
+   [View Code](docker-compose.yml)
+   
+3. **Added AutoCommit to dummy data generation script**:
+   - Change:
+   `create_engine(environ["POSTGRESQL_CS"], pool_pre_ping=True, pool_size=10, isolation_level="AUTOCOMMIT")`
+   [View Code](main/main.py)
+
+   
