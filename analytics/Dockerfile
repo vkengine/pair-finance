@@ -4,4 +4,5 @@ RUN apt-get update \
     && pip install psycopg2 sqlalchemy
 WORKDIR /app
 COPY . .
+RUN pip install -r requirements.txt
 CMD [ "python", "./analytics.py" ]
